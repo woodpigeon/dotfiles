@@ -1,0 +1,36 @@
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+alias climate="docker run \
+  --interactive --tty --rm \
+  --env CODECLIMATE_CODE="$PWD" \
+  --volume "$PWD":/code \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+  --volume /tmp/cc:/tmp/cc \
+  codeclimate/codeclimate analyze"
+alias amend="git commit --amend"
+alias oamend="OVERCOMMIT_DISABLE=1 git commit --amend"
+alias ber="be rails s"
+alias berd="pushd spec/dummy ; be rails s ; popd"
+alias dummer="bundle exec spec/dummy/bin/rails s"
+alias be="DISABLE_SPRING=1 bundle exec"
+alias beg="bundle exec guard"
+alias bes="bundle exec spring"
+alias bem="bundle exec rake db:migrate"
+alias bemt="RAILS_ENV=test bundle exec rake db:migrate"
+alias dc="docker-compose"
+alias rr="be spring rspec"
+alias br="DISABLE_SPRING=1 bin/rspec"
+alias best="be spring rspec"
+alias gl="git log"
+alias pull="git pull"
+alias bw="bin/web"
+alias befs="DISABLE_SPRING=1 bundle exec foreman start"
+alias bec="DISABLE_SPRING=1 bin/cucumber"
+alias becwip="DISABLE_SPRING=1 bin/cucumber -p wip"
+alias becw="DISABLE_SPRING=1 bin/cucumber TEST_DEPTH=web --profile rake_web"
+alias becwwip="DISABLE_SPRING=1 bin/cucumber TEST_DEPTH=web  -p wip"
+alias blat="be rake db:drop && rake db:create && bem"
+alias blat!="be rake db:drop && rake db:create && bem && be rake db:demo:seed"
+alias blate!="be rake db:drop && be rake db:create && bem && be rake db:seed"
+alias blata!="be rake db:drop && be rake db:create && bem && be rake db:demo:seed && be rake db:seed"
+alias blatd!="pushd spec/dummy ; be rake db:migrate:reset ; be rake db:seed ; popd"
+alias blat5!="bin/rails db:environment:set db:drop db:create db:migrate db:seed RAILS_ENV=development"
